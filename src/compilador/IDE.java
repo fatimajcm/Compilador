@@ -4,15 +4,17 @@
  */
 package compilador;
 
+import javax.swing.JTextPane;
+
 /**
  *
  * @author Fatima Caldera
  */
 public class IDE extends javax.swing.JFrame {
 
-    /**
-     * Creates new form IDE
-     */
+   
+    NumeroLinea numerolinea;
+    
     public IDE() {
         initComponents();
         inicializar();
@@ -42,10 +44,10 @@ public class IDE extends javax.swing.JFrame {
         btnSyntactic = new javax.swing.JButton();
         btnSemantic = new javax.swing.JButton();
         btnIntermediate = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtCompile = new javax.swing.JTextPane();
         btnError = new javax.swing.JButton();
         btnResult = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtCompile = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -136,15 +138,17 @@ public class IDE extends javax.swing.JFrame {
         });
         getContentPane().add(btnIntermediate, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 60, 70, -1));
 
-        jScrollPane3.setViewportView(txtCompile);
-
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 1010, 110));
-
         btnError.setText("Errors");
         getContentPane().add(btnError, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
 
         btnResult.setText("Results");
         getContentPane().add(btnResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, -1, -1));
+
+        txtCompile.setColumns(20);
+        txtCompile.setRows(5);
+        jScrollPane4.setViewportView(txtCompile);
+
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 1010, 110));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -153,6 +157,9 @@ public class IDE extends javax.swing.JFrame {
         setTitle("Empty Stack!");
         String [] options = new String[]{"Guardar y continuar", "Descargar"};
         
+        numerolinea = new NumeroLinea(txtCode);
+        
+        jScrollPane1.setRowHeaderView(numerolinea);
     }
     private void btnIntermediateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntermediateActionPerformed
         // TODO add your handling code here:
@@ -209,9 +216,9 @@ public class IDE extends javax.swing.JFrame {
     private javax.swing.JButton btnSyntactic;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextPane txtCode;
-    private javax.swing.JTextPane txtCompile;
+    private javax.swing.JTextArea txtCompile;
     // End of variables declaration//GEN-END:variables
 }
